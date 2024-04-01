@@ -16,10 +16,6 @@
 .columnContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: fit-content;
-  margin: 0.4em 0.2em;
-  padding: 0.2em;
 }
 .centerContainer {
   display: flex;
@@ -35,6 +31,16 @@
 }
 .inputLine input {
   margin-left: 0.2em;
+}
+
+#addPlayerComponent {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  width: fit-content;
+  margin: 0.4em 0.2em;
+  padding: 0.2em;
+  align-items: center;
 }
 
 @media (prefers-color-scheme: light) {
