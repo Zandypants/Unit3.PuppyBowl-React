@@ -4,6 +4,10 @@
   --cardWidth: 300px;
 }
 
+.scaleUp {
+  --cardScale: 1.35;
+}
+
 .card {
   display: flex;
   flex-direction: column;

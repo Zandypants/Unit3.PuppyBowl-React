@@ -1,17 +1,12 @@
-const cohortName = "2402-FTB-ET-WEB-FT";
-const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
-
 /**
- * Fetches all players from the API.
- * @param {function} setPlayers to modify data with fetched players
+ * Returns a copy of the input word with the first letter capitalized
+ * @param {string} word to be capitalized (first letter)
+ * @returns {string} capitalized word
  */
-export const fetchAllPlayers = async (setPlayers) => {
-  try {
-    const response = await fetch(API_URL + "/players");
-    const json = await response.json();
+export function capitalize(word) {
+  // validation
+  if (typeof(word) !== "string" || word.length < 1) 
+    return "";
 
-    if (json.success) setPlayers(json.data.players);
-  } catch (err) {
-    console.error("Uh oh, trouble fetching players!", err);
-  }
-};
+  return word[0].toUpperCase() + word.slice(1);
+}
