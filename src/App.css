@@ -1,6 +1,12 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
   text-align: center;
+  font-size: 3rem;
+  padding: 0.2em;
+  margin: 0.2em;
 }

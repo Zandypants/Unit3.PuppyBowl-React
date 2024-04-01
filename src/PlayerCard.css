@@ -1,0 +1,40 @@
+:root {
+  --cardRounding: 5%;
+  --cardScale: 1;
+  --cardWidth: 300px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: end; /* Lines up the info at the bottom if img fails to load */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadows to create the "card" effect */
+  width: calc(var(--cardWidth) * var(--cardScale));
+  font-size: calc(1rem* var(--cardScale));
+  margin: 6px;
+  border-radius: var(--cardRounding);
+}
+.card > img {
+  border-top-left-radius: var(--cardRounding);
+  border-top-right-radius: var(--cardRounding);
+  width: calc(var(--cardWidth) * var(--cardScale));
+}
+.card > div {
+  text-align: center;
+}
+.card button {
+  font-size: calc(0.8rem* var(--cardScale));
+  width: 100%;
+  border-radius: 10px;
+  border-width: 0.05em;
+}
+
+.containerCardInfo {
+  padding: 2px 16px;
+}
+
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
