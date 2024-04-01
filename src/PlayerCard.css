@@ -42,3 +42,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.buttonX {
+  color: red;
+  max-width: calc(40px * var(--cardScale));
+  position: relative;
+  top: 4%;
+  /* left: calc(var(--cardWidth)); */
+  left: 85%;
+  /* left: 10px; */
+}

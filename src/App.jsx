@@ -10,26 +10,23 @@ function App() {
   const [selectedID, setSelectedID] = useState(null);
   const selectedPuppy = selectedID ? players.find(puppy => puppy.id === selectedID) : null;
 
-  const formatPlayers = (newPlayers) => {
-    // players.filter((e, i) => {
-
-    // });
+  const updatePlayers = (newPlayers) => {
     newPlayers.sort((a, b) => a.id - b.id);
 
     setPlayers(newPlayers);
   }
 
-  useEffect(() => { fetchAllPlayers(formatPlayers); }, []);
+  useEffect(() => { fetchAllPlayers(updatePlayers); }, []);
 
   return (
     <>
       <h1>Bowling with Puppies</h1>
       {
         selectedPuppy
-          ? <PlayerCard player={selectedPuppy} onClick={() => setSelectedID(null)} isDetailed={true} />
+          ? <PlayerCard player={selectedPuppy} isDetailed={true} {...{setSelectedID, updatePlayers}} />
           : <>
-            <AddPlayerForm setPlayers={formatPlayers} />
-            <PlayerList players={players} setSelectedID={setSelectedID} />
+            <AddPlayerForm updatePlayers={updatePlayers} />
+            <PlayerList {...{players, setSelectedID, updatePlayers}} />
           </>
       }
     </>
