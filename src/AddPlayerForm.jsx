@@ -18,11 +18,11 @@ const AddPlayerForm = ({ updatePlayers }) => {
     event.target.reset();
   }
 
-  return <section>
+  return <section className="columnContainer">
     <h3>Add Player</h3>
     <form onSubmit={onSubmit}>
-      {["name", "breed", "imageURL"].map(key => {
-        return <div key={key}>
+      {["name", "breed", "imageUrl"].map(key => {
+        return <div key={key} className="inputLine">
           <label htmlFor={key}>{capitalize(key)}:</label>
           <input type="text" name={key} id={key} autoComplete="off" onChange={onInput}></input>
         </div>

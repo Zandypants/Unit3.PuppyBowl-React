@@ -9,11 +9,13 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: end; /* Lines up the info at the bottom if img fails to load */
+  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadows to create the "card" effect */
   width: calc(var(--cardWidth) * var(--cardScale));
+  min-height: calc(var(--cardWidth) * var(--cardScale));
   font-size: calc(1rem* var(--cardScale));
   margin: 6px;
   border-radius: var(--cardRounding);
@@ -26,11 +28,19 @@
 .card > div {
   text-align: center;
 }
+
 .card button {
   font-size: calc(0.8rem* var(--cardScale));
   width: 100%;
   border-radius: 10px;
   border-width: 0.05em;
+}
+.buttonX {
+  color: red;
+  max-width: calc(40px * var(--cardScale));
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .containerCardInfo {
@@ -41,14 +51,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.buttonX {
-  color: red;
-  max-width: calc(40px * var(--cardScale));
-  position: relative;
-  top: 4%;
-  /* left: calc(var(--cardWidth)); */
-  left: 85%;
-  /* left: 10px; */
 }

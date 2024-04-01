@@ -23,9 +23,11 @@ function App() {
       <h1>Bowling with Puppies</h1>
       {
         selectedPuppy
-          ? <PlayerCard player={selectedPuppy} isDetailed={true} {...{setSelectedID, updatePlayers}} />
+          ? <div className="containerCards"><PlayerCard player={selectedPuppy} isDetailed={true} {...{setSelectedID, updatePlayers}} /></div>
           : <>
-            <AddPlayerForm updatePlayers={updatePlayers} />
+            <section className="centerContainer">
+              <AddPlayerForm updatePlayers={updatePlayers} />
+            </section>
             <PlayerList {...{players, setSelectedID, updatePlayers}} />
           </>
       }

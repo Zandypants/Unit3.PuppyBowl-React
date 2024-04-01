@@ -13,6 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 0.4em 0.2em;
+  padding: 0.2em;
+}
+.centerContainer {
+  display: flex;
+  place-content: center;
+}
+
+.inputLine {
+  display: flex;
+  justify-content: space-between;
+}
+.inputLine label {
+  margin-right: 0.2em;
+}
+.inputLine input {
+  margin-left: 0.2em;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
