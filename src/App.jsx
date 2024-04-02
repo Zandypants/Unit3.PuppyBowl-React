@@ -1,12 +1,14 @@
 import './App.css'
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import { fetchAllPlayers } from './api';
+import AddPlayerForm from './AddPlayerForm';
 import PlayerCard from './PlayerCard';
 import PlayerList from './PlayerList';
-import AddPlayerForm from './AddPlayerForm';
 
 function App() {
   const [players, setPlayers] = useState([]);
+  const [playersDisplayed, setPlayersDisplayed] = useState([]);
   const [selectedID, setSelectedID] = useState(null);
   const selectedPuppy = selectedID ? players.find(puppy => puppy.id === selectedID) : null;
 
@@ -28,7 +30,7 @@ function App() {
             <section className="centerContainer">
               <AddPlayerForm updatePlayers={updatePlayers} />
             </section>
-            <PlayerList {...{players, setSelectedID, updatePlayers}} />
+            <PlayerList {...{players, updatePlayers, setSelectedID, playersDisplayed, setPlayersDisplayed}} />
           </>
       }
     </>

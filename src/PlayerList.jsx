@@ -1,13 +1,17 @@
 import PlayerCard from './PlayerCard';
+import SearchBar from './SearchBar';
 
-const PlayerList = ({ players, setSelectedID, updatePlayers }) => {
-  return <section> {
-    players.length > 0 ?
-      <div className='containerCards'>{
-        players.map((puppy, i) => <PlayerCard key={i} player={puppy} {...{setSelectedID, updatePlayers}}/>)}
-      </div>
-      : <p>Oh no! 😮 The puppies escaped the bowl!</p>
-  }
+const PlayerList = (props) => {
+  const { playersDisplayed } = props;
+  return <section>
+    <SearchBar {...props} />
+    {
+      playersDisplayed.length > 0 ?
+        <div className='containerCards'>{
+          playersDisplayed.map((puppy, i) => <PlayerCard key={i} player={puppy} {...props} />)}
+        </div>
+        : <p>Oh no! 😮 The puppies escaped the bowl!</p>
+    }
   </section>
 }
 
