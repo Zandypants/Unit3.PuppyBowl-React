@@ -1,16 +1,19 @@
 import "./PlayerCard.css"
 import { deletePlayer } from "./api.jsx"
+import { useNavigate } from "react-router-dom"
 
-const PlayerCard = ({ player, isDetailed, setSelectedID, updatePlayers }) => {
+const PlayerCard = ({ player, isDetailed, updatePlayers }) => {
+  const navigate = useNavigate();
+
   let cardClass = `card`;
   let selectFn, selectContent;
   if (isDetailed) {
     cardClass += " scaleUp";
     selectContent = "Back to All";
-    selectFn = () => setSelectedID(null);
+    selectFn = () => navigate("/");
   } else {
     selectContent = "See Details";
-    selectFn = () => setSelectedID(player.id);
+    selectFn = () => navigate(`/${player.id}`);
   }
 
   return <section className={cardClass}>

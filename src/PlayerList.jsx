@@ -10,7 +10,7 @@ const PlayerList = (props) => {
         <div className='containerCards'>{
           playersDisplayed.map((puppy, i) => <PlayerCard key={i} player={puppy} {...props} />)}
         </div>
-        : <p>Oh no! 😮 The puppies escaped the bowl!</p>
+        : <p>Oh no! 😮 The bowl of puppies is empty!</p>
     }
   </section>
 }
