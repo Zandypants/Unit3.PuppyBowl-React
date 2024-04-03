@@ -4,7 +4,7 @@ import PlayerList from './PlayerList';
 const Home = (props) => {
   return <>
     <section className="centerContainer">
-      <AddPlayerForm updatePlayers={props.updatePlayers} />
+      <AddPlayerForm {...props} />
     </section>
     <PlayerList {...props} />
   </>

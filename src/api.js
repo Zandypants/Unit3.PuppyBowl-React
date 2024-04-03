@@ -3,7 +3,7 @@ const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
 
 /**
  * Fetches all players from the API.
- * @param {function}  to modify data with fetched players
+ * @param {function} updatePlayers to modify data with fetched players
  */
 export const fetchAllPlayers = async (updatePlayers) => {
   try {
@@ -16,6 +16,11 @@ export const fetchAllPlayers = async (updatePlayers) => {
   }
 };
 
+/**
+ * Posts a player to the API.
+ * @param {object} playerObj player to post
+ * @param {function} updatePlayers to pass to fetchAllPlayers
+ */
 export const postPlayer = async (playerObj, updatePlayers) => {
   try {
     const response = await fetch(API_URL + "/players", {
@@ -31,6 +36,12 @@ export const postPlayer = async (playerObj, updatePlayers) => {
     console.error("Uh oh, trouble posting player!", err);
   }
 }
+
+/**
+ * Deletes a player from the API.
+ * @param {number or string} playerID id of the player to be deleted
+ * @param {function} updatePlayers to pass to fetchAllPlayers
+ */
 export const deletePlayer = async (playerID, updatePlayers) => {
   try {
     const response = await fetch(API_URL + '/players/' + playerID,
@@ -42,3 +53,18 @@ export const deletePlayer = async (playerID, updatePlayers) => {
     console.error("Uh oh, trouble deleting player!", err);
   }
 }
+
+/**
+ * Fetches teams of players from the API.
+ * @param {function} setTeams to modify data with fetched teams
+ */
+export const fetchTeams = async (setTeams) => {
+  try {
+    const response = await fetch(API_URL + "/teams");
+    const json = await response.json();
+
+    if (json.success) setTeams(json.data.teams);
+  } catch (err) {
+    console.error("Uh oh, trouble fetching teams!", err);
+  }
+};

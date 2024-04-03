@@ -2,7 +2,7 @@ import PlayerCard from './PlayerCard';
 import SearchBar from './SearchBar';
 
 const PlayerList = (props) => {
-  const { playersDisplayed } = props;
+  const { playersDisplayed, players } = props;
   return <section>
     <SearchBar {...props} />
     {
@@ -10,7 +10,7 @@ const PlayerList = (props) => {
         <div className='containerCards'>{
           playersDisplayed.map((puppy, i) => <PlayerCard key={i} player={puppy} {...props} />)}
         </div>
-        : <p>Oh no! 😮 The bowl of puppies is empty!</p>
+        : players.length > 0 ? <p>Try searching the bowl more carefully for 🐶</p> : <p>Oh no! 😮 The puppies escaped the bowl!</p>
     }
   </section>
 }
