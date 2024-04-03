@@ -1,25 +1,13 @@
 import { useState } from "react";
-import { postPlayer } from './api';
+import { postPlayer, convertObjData } from './api';
 import { capitalize } from './helpers';
 
 const AddPlayerForm = ({ updatePlayers, teams }) => {
   const [newPlayer, setNewPlayer] = useState({});
 
   const onInput = (event) => {
-    let key, value;
-    switch (event.target.name) {
-      case "team":
-        key = "teamId";
-        const team = teams.find(t => t.name === event.target.value);
-        value = team ? team.id : null;
-        break;
-      default:
-        key = event.target.name;
-        value = event.target.value;
-        break;
-    }
+    const {key, value} = convertObjData(event.target.name, event.target.value, {teams});
     newPlayer[key] = value;
-    console.log(key, newPlayer[key]);
     setNewPlayer(newPlayer);
   }
 

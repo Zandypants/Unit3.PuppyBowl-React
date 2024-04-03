@@ -68,3 +68,29 @@ export const fetchTeams = async (setTeams) => {
     console.error("Uh oh, trouble fetching teams!", err);
   }
 };
+
+/**
+ * Converts team name into associated id
+ * @param {string} teamName to convert
+ * @param {object[]} teams acquired through previous api call (fetchTeams)
+ * @returns 
+ */
+export const getTeamID = (teamName, teams) => {
+  return teams?.find(t => t.name === teamName)?.id;
+}
+
+/**
+ * Converts readable/displayed object data to api object data
+ * @param {string} key 
+ * @param {any} value 
+ * @param {object} savedData relevant to conversion, acquired through previous api calls (eg. {players: fetchAllPlayers, teams: fetchTeams})
+ * @returns 
+ */
+export const convertObjData = (key, value, savedData) => {
+  let result = {key, value};
+  if (key === "team") {
+    result.key = "teamId";
+    result.value = getTeamID(value, savedData?.teams);
+  }
+  return result;
+}
