@@ -27,7 +27,7 @@ const SearchBar = ({ players, setPlayersDisplayed, teams }) => {
     const newFilters = {...filters};
     const {key, value} = convertObjData(event.target.name, event.target.value, {teams});
     newFilters[key] = value;
-    console.log(key, newFilters[key]);
+
     setFilters(newFilters);
   }
   
@@ -36,7 +36,7 @@ const SearchBar = ({ players, setPlayersDisplayed, teams }) => {
 
   return <>
     <label>Search:
-      <input type="text" placeholder="" name="name" onChange={onInput/*(e) => setSearch(e.target.value.toLowerCase())*/}></input>
+      <input type="text" placeholder="" name="name" onChange={onInput}></input>
     </label>
     {[{ name: "team", options: teamOptions }, { name: "status", options: ["Any", "bench", "field"] }].map(({ name, options }) => {
       const searchName = name + "Search";

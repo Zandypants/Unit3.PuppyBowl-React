@@ -18,14 +18,9 @@ function App() {
   const fetchAPI = () => {
     fetchAllPlayers(updatePlayers);
     fetchTeams(setTeams);
-    console.log("API refreshed");
   }
 
   useEffect(() => { fetchAPI(); }, []);
-
-  useEffect(() => {
-    console.log(teams);
-  }, [teams]);
 
   return (
     <>
