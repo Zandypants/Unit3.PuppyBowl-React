@@ -17,12 +17,13 @@ function App() {
 
   const fetchAPI = () => {
     fetchAllPlayers(updatePlayers);
-    fetchTeams(setTeams); 
+    fetchTeams(setTeams);
+    console.log("API refreshed");
   }
 
   useEffect(() => { fetchAPI(); }, []);
 
-  useEffect(() => { 
+  useEffect(() => {
     console.log(teams);
   }, [teams]);
 
@@ -30,8 +31,8 @@ function App() {
     <>
       <h1>Bowling with Puppies</h1>
       <Routes>
-        <Route path="/" element={<Home {...{ players, updatePlayers, playersDisplayed, setPlayersDisplayed, teams }} />} />
-        <Route path="/:id" element={<SinglePlayer {...{ players, updatePlayers, teams }} />} />
+        <Route path="/" element={<Home {...{ players, updatePlayers, playersDisplayed, setPlayersDisplayed, teams, fetchAPI }} />} />
+        <Route path="/:id" element={<SinglePlayer {...{ players, updatePlayers, teams, fetchAPI }} />} />
       </Routes>
     </>
   )

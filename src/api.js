@@ -19,18 +19,15 @@ export const fetchAllPlayers = async (updatePlayers) => {
 /**
  * Posts a player to the API.
  * @param {object} playerObj player to post
- * @param {function} updatePlayers to pass to fetchAllPlayers
  */
-export const postPlayer = async (playerObj, updatePlayers) => {
+export const postPlayer = async (playerObj) => {
   try {
-    const response = await fetch(API_URL + "/players", {
+    await fetch(API_URL + "/players", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(playerObj),
       }
     );
-    const json = await response.json();
-    fetchAllPlayers(updatePlayers);
   }
   catch (err) {
     console.error("Uh oh, trouble posting player!", err);
@@ -40,15 +37,12 @@ export const postPlayer = async (playerObj, updatePlayers) => {
 /**
  * Deletes a player from the API.
  * @param {number or string} playerID id of the player to be deleted
- * @param {function} updatePlayers to pass to fetchAllPlayers
  */
-export const deletePlayer = async (playerID, updatePlayers) => {
+export const deletePlayer = async (playerID) => {
   try {
-    const response = await fetch(API_URL + '/players/' + playerID,
+    await fetch(API_URL + '/players/' + playerID,
       { method: 'DELETE', }
     );
-    const result = await response.json();
-    fetchAllPlayers(updatePlayers);
   } catch (err) {
     console.error("Uh oh, trouble deleting player!", err);
   }
@@ -73,7 +67,7 @@ export const fetchTeams = async (setTeams) => {
  * Converts team name into associated id
  * @param {string} teamName to convert
  * @param {object[]} teams acquired through previous api call (fetchTeams)
- * @returns 
+ * @returns {number or undefined} id
  */
 export const getTeamID = (teamName, teams) => {
   return teams?.find(t => t.name === teamName)?.id;
@@ -81,10 +75,10 @@ export const getTeamID = (teamName, teams) => {
 
 /**
  * Converts readable/displayed object data to api object data
- * @param {string} key 
- * @param {any} value 
+ * @param {string} key to convert
+ * @param {any} value to convert
  * @param {object} savedData relevant to conversion, acquired through previous api calls (eg. {players: fetchAllPlayers, teams: fetchTeams})
- * @returns 
+ * @returns {object} {key, value} converted data
  */
 export const convertObjData = (key, value, savedData) => {
   let result = {key, value};

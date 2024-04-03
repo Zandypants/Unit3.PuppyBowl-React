@@ -2,7 +2,7 @@ import "./PlayerCard.css"
 import { deletePlayer } from "./api.js"
 import { useNavigate } from "react-router-dom"
 
-const PlayerCard = ({ player, isDetailed, updatePlayers, team }) => {
+const PlayerCard = ({ player, isDetailed, team, fetchAPI }) => {
   const navigate = useNavigate();
 
   let cardClass = `card`;
@@ -16,8 +16,13 @@ const PlayerCard = ({ player, isDetailed, updatePlayers, team }) => {
     selectFn = () => navigate(`/${player.id}`);
   }
 
+  const deleteSelf = async () => {
+    await deletePlayer(player.id);
+    await fetchAPI();
+  }
+
   return <section className={cardClass}>
-    <button className="buttonX" onClick={() => deletePlayer(player.id, updatePlayers)}>X</button>
+    <button className="buttonX" onClick={() => deleteSelf()}>X</button>
     <img src={player.imageUrl} alt={player.name} />
     <div className="containerCardInfo">
       <div>{player.id}</div>

@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import PlayerCard from "./PlayerCard";
 import { useParams, useNavigate } from "react-router-dom"
 
-const SinglePlayer = ({ players, updatePlayers, teams }) => {
+const SinglePlayer = (props) => {
+  const { players, teams } = props;
   const params = useParams();
   const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const SinglePlayer = ({ players, updatePlayers, teams }) => {
   return <div className="containerCards">
     {
       player
-        ? <PlayerCard isDetailed={true} {...{ player, updatePlayers, team }} />
+        ? <PlayerCard isDetailed={true} {...{ player, team, ...props }} />
         : <h1>Puppy {params.id} was not found...</h1>
     }
   </div>

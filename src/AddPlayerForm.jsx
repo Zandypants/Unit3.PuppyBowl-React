@@ -2,7 +2,7 @@ import { useState } from "react";
 import { postPlayer, convertObjData } from './api';
 import { capitalize } from './helpers';
 
-const AddPlayerForm = ({ updatePlayers, teams }) => {
+const AddPlayerForm = ({ teams, fetchAPI }) => {
   const [newPlayer, setNewPlayer] = useState({});
 
   const onInput = (event) => {
@@ -11,13 +11,18 @@ const AddPlayerForm = ({ updatePlayers, teams }) => {
     setNewPlayer(newPlayer);
   }
 
+  const post = async (addPlayer) => {
+    await postPlayer(addPlayer);
+    await fetchAPI();
+  }
+
   const onSubmit = (event) => {
     event.preventDefault();
 
     const addPlayer = {...newPlayer};
     if (!addPlayer.name) addPlayer["name"] = "Unnamed";
     if (!addPlayer.breed) addPlayer["breed"] = "Mutt";
-    postPlayer(addPlayer, updatePlayers);
+    post(addPlayer);
 
     event.target.reset();
   }
