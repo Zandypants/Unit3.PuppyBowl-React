@@ -2,6 +2,7 @@
   --cardRounding: 5%;
   --cardScale: 1;
   --cardWidth: 300px;
+  --imgHeightRatio: 1.5
 }
 
 .scaleUp {
@@ -15,7 +16,7 @@
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadows to create the "card" effect */
   width: calc(var(--cardWidth) * var(--cardScale));
-  min-height: calc(var(--cardWidth) * var(--cardScale));
+  height: fit-content;
   font-size: calc(1rem* var(--cardScale));
   margin: 6px;
   border-radius: var(--cardRounding);
@@ -24,6 +25,8 @@
   border-top-left-radius: var(--cardRounding);
   border-top-right-radius: var(--cardRounding);
   width: calc(var(--cardWidth) * var(--cardScale));
+  max-height: calc(var(--cardWidth) * var(--imgHeightRatio) * var(--cardScale));
+  object-fit: cover;
 }
 .card > div {
   text-align: center;
@@ -51,4 +54,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-end;
 }
